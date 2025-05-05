@@ -74,7 +74,7 @@ cv2.namedWindow("Processing", cv2.WINDOW_NORMAL)
 cv2.resizeWindow("Processing", 640, 480)
 
 while True:
-    imgBG = cv2.imread("Resources/BG.png")
+    imgBG = cv2.imread("Resources/BG2.png")
     success, img = cap.read()
 
     imgScaled = cv2.resize(img, (0, 0), None, 0.875, 0.875)
@@ -92,7 +92,7 @@ while True:
     if startGame:
         if not stateResult:
             timer = time.time() - initialTime
-            cv2.putText(imgBG, str(int(timer)), (602, 432), cv2.FONT_HERSHEY_PLAIN, 6, (255, 0, 255), 5)
+            cv2.putText(imgBG, str(int(timer)), (602, 432), cv2.FONT_HERSHEY_PLAIN, 6, (232, 12, 0), 4)
 
             if timer > 1:
                 stateResult = True
@@ -142,11 +142,11 @@ while True:
 
     if stateResult and imgAI is not None:
         imgBG = cvzone.overlayPNG(imgBG, imgAI, (149, 310))
-        cv2.putText(imgBG, resultText, (500, 150), cv2.FONT_HERSHEY_SIMPLEX, 2, (0, 255, 0), 5)
+        cv2.putText(imgBG, resultText, (560, 410), cv2.FONT_HERSHEY_PLAIN, 2, (232, 12, 0), 4)
 
     # Show scores
-    cv2.putText(imgBG, str(scores[0]), (410, 215), cv2.FONT_HERSHEY_PLAIN, 4, (255, 255, 255), 7)
-    cv2.putText(imgBG, str(scores[1]), (1112, 215), cv2.FONT_HERSHEY_PLAIN, 4, (255, 255, 255), 7)
+    cv2.putText(imgBG, str(scores[0]), (410, 215), cv2.FONT_HERSHEY_PLAIN, 4, (232, 12, 0), 4)
+    cv2.putText(imgBG, str(scores[1]), (1112, 215), cv2.FONT_HERSHEY_PLAIN, 4, (232, 12, 0), 4)
 
     # Display image processing stages
     stack = np.hstack((gray, blur, thresh, edges))
